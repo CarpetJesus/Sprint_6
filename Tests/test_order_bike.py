@@ -31,6 +31,18 @@ class TestOrderBike:
 
         order_page.is_confirm_window_visible()
 
+    @allure.feature('Проверка перехода на главную страницу после нажатия на кнопку "Самокат" в хэдере')
+    def test_click_on_bike_button(self, driver):
+        main_page = MainPage(driver)
+        main_page.click_header_order()
+
+        assert driver.current_url == order_site
+
+        main_page.click_scooter()
+
+        assert driver.current_url == main_site
+
+
 
 
 
