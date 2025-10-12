@@ -8,6 +8,8 @@ class MainPageLocators:
     ORDER_BUTTON_MID = [By.XPATH, "//div[contains(@class, 'FinishButton')]//button[text()='Заказать']"]
     COCKIE_BUTTON = (By.XPATH, "//button[@id='rcc-confirm-button']")
 
+    DZEN_LOGO = (By.XPATH, "//a[@aria-label='Логотип Бренда']")
+
     @staticmethod
     def question_number(number):
         return (By.XPATH, f'//div[@id="accordion__heading-{number}"]')

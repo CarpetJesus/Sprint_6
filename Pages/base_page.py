@@ -44,5 +44,13 @@ class BasePage:
             EC.text_to_be_present_in_element_attribute(locator, attribute, text)
         )
 
+    def wait_new_page(self):
+        return WebDriverWait(self.driver, 10).until(lambda d: len(d.window_handles) > 1)
+
+    def not_blank(self):
+        return WebDriverWait(self.driver, 10).until(lambda d: d.current_url != "about:blank")
+
+
+
 
 
