@@ -22,7 +22,7 @@ class MainPage(BasePage):
 
     @allure.step("Открыть вопрос из списка")
     def click_question(self, question_number):
-        number_locator = (MainPageLocators.question_number(number))
+        number_locator = (MainPageLocators.question_number(question_number))
         self.scroll_to_element(number_locator)
         self.click_on_element(number_locator)
 

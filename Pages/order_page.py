@@ -4,60 +4,48 @@ from Pages.base_page import BasePage
 
 
 class OrderPage(BasePage):
-    @allure.step("Заполнить имя"):
-    def fill_name(self):
-        self.enter_text(OrderPageLocators.NAME_INPUT, name)
-
-    @allure.step("Заполнить фамилию"):
-    def fill_surname(self):
-        self.enter_text(OrderPageLocators.LAST_NAME_INPUT, last_name)
-
-    @allure.step("Заполнить адрес"):
-    def fill_address(self):
-        self.enter_text(OrderPageLocators.ADDRESS_INPUT, address)
-
-    @allure.step("Выбрать станию метро"):
-    def select_metro_station(self):
+    @allure.step("Выбрать станию метро")
+    def select_metro_station(self, station_name):
         self.click_on_element(OrderPageLocators.METRO_INPUT)
-        station = self.scroll_to_element(OrderPageLocators.METRO_LIST)
+        station = OrderPageLocators.metro_list(station_name)
+        self.scroll_to_element(station)
         self.click_on_element(station)
 
-    @allure.step("Заполнить номер телефона"):
-    def fill_phone(self):
-        self.enter_text(OrderPageLocators.PHONE_INPUT, phone)
-
-    @allure.step("Нажать на кнопку Далее"):
+    @allure.step("Нажать на кнопку Далее")
     def click_next_button(self):
         self.click_on_element(OrderPageLocators.CONTINUE_BUTTON)
 
-    @allure.step("Ввести дату"):
-    def fill_date(self):
-        self.enter_text(OrderPageLocators.WHEN_INPUT, date)
-
-    @allure.step("Выбрать срок аренды"):
-    def select_rent_period(self):
+    @allure.step("Выбрать срок аренды")
+    def select_rent_period(self, period):
         self.click_on_element(OrderPageLocators.ORDER_DATE_FORM)
-        self.scroll_to_element(OrderPageLocators.ORDER_DATE)
-        self.click_on_element(OrderPageLocators.ORDER_DATE)
+        date_period = (OrderPageLocators.order_date(period))
+        self.scroll_to_element(date_period)
+        self.click_on_element(date_period)
 
-    @allure.step("Выбрать цвет самоката"):
-    def select_color(self):
-        self.click_on_element(OrderPageLocators.VEHICLE_COLOR)
 
-    @allure.step("Заполнить комментарий"):
-    def fill_comment(self):
+    @allure.step("Заполнить поля заказа")
+    def fill_order_data(self, name, last_name, address, station_name, phone, delivery_date, period, color, comment):
+        self.enter_text(OrderPageLocators.NAME_INPUT, name)
+        self.enter_text(OrderPageLocators.LAST_NAME_INPUT, last_name)
+        self.enter_text(OrderPageLocators.ADDRESS_INPUT, address)
+        self.select_metro_station(station_name)
+        self.enter_text(OrderPageLocators.PHONE_INPUT, phone)
+        self.click_next_button()
+        self.enter_text(OrderPageLocators.WHEN_INPUT, delivery_date)
+        self.select_rent_period(period)
+        color_locator = OrderPageLocators.vehicle_color(color)
+        self.click_on_element(color_locator)
         self.enter_text(OrderPageLocators.COMMENT_INPUT, comment)
 
-    @allure.step("Нажать на кнопку Заказать"):
+    @allure.step("Нажать на кнопку Заказать")
     def click_order_button(self):
         self.click_on_element(OrderPageLocators.ORDER_FORM_BUTTON)
 
-    @allure.step("Нажать на кнопку подтверждения заказа"):
+    @allure.step("Нажать на кнопку подтверждения заказа")
     def click_confirm_order_button(self):
         self.click_on_element(OrderPageLocators.CONFIRM_BUTTON)
 
-    @allure.step("Сравнить текст окна подтверждения заказа"):
+    @allure.step("Сравнить текст окна подтверждения заказа")
     def compare_confirm_text(self, expected_text):
         text = self.get_text(OrderPageLocators.CONFIRM_WINDOW)
         assert text == expected_text
-
