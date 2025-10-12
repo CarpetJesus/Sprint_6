@@ -28,7 +28,7 @@ class MainPage(BasePage):
 
     @allure.step("Сравнить текст в вопросе")
     def check_question_text(self, expected_text):
-        actual_text = self.get_text(MainPageLocators.question_number(number))
+        actual_text = self.get_text(MainPageLocators.question_answer(number))
         assert actual_text == expected_text
 
 
