@@ -23,11 +23,12 @@ class MainPage(BasePage):
     @allure.step("Открыть вопрос из списка")
     def click_question(self, question_number):
         number_locator = (MainPageLocators.question_number(question_number))
+        self.wait_for_element(number_locator)
         self.scroll_to_element(number_locator)
         self.click_on_element(number_locator)
 
     @allure.step("Сравнить текст в вопросе")
-    def check_question_text(self, expected_text):
+    def check_question_text(self, number, expected_text):
         actual_text = self.get_text(MainPageLocators.question_answer(number))
         assert actual_text == expected_text
 
