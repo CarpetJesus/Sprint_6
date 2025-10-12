@@ -6,6 +6,7 @@ class MainPageLocators:
     SCOOTER_LOGO = [By.XPATH, "//img[@alt='Scooter']"]
     ORDER_BUTTON_HEAD = [By.XPATH, "//div[contains(@class, 'Header')]//button[text()='Заказать']"]
     ORDER_BUTTON_MID = [By.XPATH, "//div[contains(@class, 'FinishButton')]//button[text()='Заказать']"]
+    COCKIE_BUTTON = (By.XPATH, "//button[@id='rcc-confirm-button']")
 
     @staticmethod
     def question_number(number):

@@ -31,5 +31,13 @@ class MainPage(BasePage):
         actual_text = self.get_text(MainPageLocators.question_answer(number))
         assert actual_text == expected_text
 
+    @allure.step("Закрыть попап с куки")
+    def close_cookies_popup(self):
+        try:
+            self.wait_for_element(MainPageLocators.COCKIE_BUTTON)
+            self.click_on_element(MainPageLocators.COCKIE_BUTTON)
+        except:
+            pass
+
 
 

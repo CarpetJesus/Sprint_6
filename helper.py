@@ -5,11 +5,11 @@ from datetime import datetime, timedelta
 faker = Faker('ru_RU')
 
 def generate_order_data():
-    name = faker.name()
+    name = faker.first_name()
     last_name = faker.last_name()
-    adress = faker.street_name()
-    phone = faker.phone_number().replace('+7','8')
-    delivery_date = datetime.now() + timedelta(days=random.randint(1, 5)).strftime("%d.%m.%Y")
+    address = faker.street_name()
+    phone = "8" + "".join(str(random.randint(0, 9)) for _ in range(10))
+    delivery_date = (datetime.now() + timedelta(days=random.randint(1, 5))).strftime("%d.%m.%Y")
     comment = faker.sentence(nb_words=6)
 
     return {

@@ -1,4 +1,5 @@
 from helper import generate_order_data
+from Locators.main_page_locators import MainPageLocators
 
 
 class Data:
@@ -15,11 +16,11 @@ class Data:
 
 class FormData:
 
-test_1 = generate_order_data()
-test_2 = generate_order_data()
+    test_1 = generate_order_data()
+    test_2 = generate_order_data()
 
     test_data = [
-        [test_1["name"],
+        [MainPageLocators.ORDER_BUTTON_HEAD, test_1["name"],
          test_1["last_name"],
          test_1["address"],
          "Сокольники",
@@ -28,7 +29,8 @@ test_2 = generate_order_data()
          "трое суток",
          "grey",
          test_1["comment"]],
-        [test_2["name"],
+        [MainPageLocators.ORDER_BUTTON_MID,
+         test_2["name"],
          test_2["last_name"],
          test_2["address"],
          "Тропарёво",
