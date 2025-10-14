@@ -34,12 +34,13 @@ pip install -r requirements.txt
 2. Запустите тесты:
 
 ```bash
-pytest -v tests/test_order_bike.py
+pytest -v
 ```
 
 3. Для генерации и просмотра отчетов Allure:
 
 ```bash
-pytest --alluredir=./allure-results tests/test_order_bike.py
-allure serve ./allure-results
+pytest --alluredir=allure-results
+allure generate allure-results -o allure-report --clean
+allure open allure-report
 ```
