@@ -44,11 +44,23 @@ class BasePage:
             EC.text_to_be_present_in_element_attribute(locator, attribute, text)
         )
 
+    @allure.step("Дождаться перехода на новую вкладку")
     def wait_new_page(self):
         return WebDriverWait(self.driver, 10).until(lambda d: len(d.window_handles) > 1)
 
+    @allure.step("Дождаться что вкладка не пустая")
     def not_blank(self):
         return WebDriverWait(self.driver, 10).until(lambda d: d.current_url != "about:blank")
+
+    @allure.step("Проверить текущий url")
+    def check_current_url(self, url):
+        assert self.driver.current_url == url
+
+    @allure.step("Переключиться на новую вкладку")
+    def switch_to_new_window(self):
+        self.driver.switch_to.window(self.driver.window_handles[1])
+
+
 
 
 

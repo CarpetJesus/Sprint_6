@@ -7,7 +7,7 @@ from curl import *
 
 @pytest.fixture(scope="function")
 def driver():
-    driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+    driver = webdriver.Firefox()
     driver.set_window_size(1280, 720)
     driver.get(main_site)
     yield driver

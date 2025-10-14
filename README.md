@@ -1,5 +1,3 @@
-Конечно! Вот готовая версия README.md в виде одного цельного текста, который можно сразу скопировать:
-
 ````markdown
 # Sprint_6
 Выборнов Никита — 6 Спринт
@@ -36,12 +34,12 @@ pip install -r requirements.txt
 2. Запустите тесты:
 
 ```bash
-pytest -v Tests/test_order_bike.py
+pytest -v tests/test_order_bike.py
 ```
 
 3. Для генерации и просмотра отчетов Allure:
 
 ```bash
-pytest --alluredir=./allure-results Tests/test_order_bike.py
+pytest --alluredir=./allure-results tests/test_order_bike.py
 allure serve ./allure-results
 ```

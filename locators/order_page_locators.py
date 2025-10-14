@@ -19,19 +19,19 @@ class OrderPageLocators:
 
     @staticmethod
     def metro_list(value):
-        return (By.XPATH, f"//button[contains(@class, 'select-search__option')]//div[text()='{value}']")
+        return By.XPATH, f"//button[contains(@class, 'select-search__option')]//div[text()='{value}']"
 
     @staticmethod
     def order_date(date):
-        return (By.XPATH, f'//div[contains(@class, "Dropdown-option") and text()="{date}"]')
+        return By.XPATH, f'//div[contains(@class, "Dropdown-option") and text()="{date}"]'
 
     @staticmethod
     def vehicle_color(color):
-        return (By.XPATH, f'//input[@id="{color}"]')
+        return By.XPATH, f'//input[@id="{color}"]'
 
     @staticmethod
     def calendar_date(day):
-        return (By.XPATH, f'//div[contains(@class,"react-datepicker__day") and @aria-label="{day}"]')
+        return By.XPATH, f'//div[contains(@class,"react-datepicker__day") and @aria-label="{day}"]'
 
 
 

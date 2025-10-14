@@ -1,6 +1,6 @@
 import allure
-from Pages.base_page import BasePage
-from Locators.main_page_locators import MainPageLocators
+from pages.base_page import BasePage
+from locators.main_page_locators import MainPageLocators
 
 
 class MainPage(BasePage):
@@ -37,8 +37,12 @@ class MainPage(BasePage):
         try:
             self.wait_for_element(MainPageLocators.COCKIE_BUTTON)
             self.click_on_element(MainPageLocators.COCKIE_BUTTON)
-        except:
-            pass
+        except (TimeoutException, NoSuchElementException):
+            print("Куки не появились")
+
+    @allure.step("Дождаться появления логотипа Дзена")
+    def wait_for_dzen_logo(self):
+        self.wait_for_element(MainPageLocators.DZEN_LOGO)
 
 
 

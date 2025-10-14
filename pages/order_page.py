@@ -1,6 +1,6 @@
 import allure
-from Locators.order_page_locators import OrderPageLocators
-from Pages.base_page import BasePage
+from locators.order_page_locators import OrderPageLocators
+from pages.base_page import BasePage
 
 
 class OrderPage(BasePage):
@@ -67,6 +67,6 @@ class OrderPage(BasePage):
         assert text == expected_text
 
     @allure.step("Проверить, что окно подтверждения заказа появилось")
-    def is_confirm_window_visible(self, timeout=20):
+    def check_is_window_visible(self):
         element = self.wait_for_element(OrderPageLocators.CONFIRM_WINDOW)
         assert element.is_displayed(), "Окно подтверждения заказа не появилось"

@@ -1,5 +1,5 @@
 from helper import generate_order_data
-from Locators.main_page_locators import MainPageLocators
+from locators.main_page_locators import MainPageLocators
 
 
 class Data:
