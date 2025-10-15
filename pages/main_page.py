@@ -1,4 +1,5 @@
 import allure
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
 
